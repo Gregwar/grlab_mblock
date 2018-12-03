@@ -1,0 +1,74 @@
+{	
+	"extensionName": "GR_lab (Arduino mode Only)",
+	"description": "GRLab extension (arduino mega only)",
+	"version": "1.0",
+	"author": "Paul (support@generationrobots.com)",
+	"homepage": "http://www.generationrobots.com",
+	"sort":0,
+	"javascriptURL":"js/gr.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,GRLab,grove",
+	"blockSpecs": [
+		["h","GR-LAB - générer le code","runArduino"],
+		["r",
+		"read ultrasonic pin %n",
+		"read ultrasonic",
+		"8",
+		{
+			"setup":"",
+			"inc":"#include \"Ultrasonic.h\"\n",
+			"def":"Ultrasonic ultrasonic({0});",
+			"work":"ultrasonic.MeasureInCentimeters()",
+			"loop":""
+		}
+	],
+		["w",
+		"Set I2C motor driver adress %s ",
+		"Set I2C motor driver adress",
+		"0x0f",
+		{
+			"setup":"Motor.begin(I2C_ADDRESS);",
+			"inc":"#include \"Grove_I2C_Motor_Driver.h\"\n",
+			"def":"#define I2C_ADDRESS {0}",
+			"work":"",
+			"loop":""
+		}
+	],
+		["w",
+		"set motor %d.motors to %n \%",
+		"set motor",
+		"1",
+		"70",
+		{
+			"setup":"",
+			"inc":"",
+			"def":"",
+			"work":"Motor.speed({0}, {1});",
+			"loop":""
+		}
+		],
+		["w",
+		"Stop motor %d.motors",
+		"Stop motor",
+		"1",
+		{
+			"setup":"",
+			"inc":"",
+			"def":"",
+			"work":"Motor.stop({0});",
+			"loop":""
+		}
+		]
+	],
+		"menus": {
+		"motors":["1","2"]
+	},
+	"values":{
+		"1":1,
+		"2":2
+	},
+	"translators":{
+		}
+	}
+}
