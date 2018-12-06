@@ -17,9 +17,43 @@
 		"8",
 		{
 			"setup":"",
-			"inc":"#include \"Ultrasonic.h\"\n",
+			"inc":"\n#include \"Ultrasonic.h\"\n",
 			"def":"Ultrasonic ultrasonic({0});",
 			"work":"ultrasonic.MeasureInCentimeters()",
+			"loop":""
+		}
+	],
+		["r",
+		"imu %d.imu",
+		"read IMU",
+		"readFloatAccelX",
+		{
+			"setup":"",
+			"inc":"",
+			"def":"",
+			"work":"myIMU.mblocCall({0})",
+			"loop":""
+		}
+	],
+			["r",
+		"Read left encoder",
+		"Read left encoder",
+		{
+			"setup":"",
+			"inc":"",
+			"def":"",
+			"work":"knobLeft.read()",
+			"loop":""
+		}
+	],
+			["r",
+		"Read right encoder",
+		"Read right encoder",
+		{
+			"setup":"",
+			"inc":"",
+			"def":"",
+			"work":"knobRight.read()",
 			"loop":""
 		}
 	],
@@ -28,9 +62,9 @@
 		"Set I2C motor driver adress",
 		"0x0f",
 		{
-			"setup":"Motor.begin(I2C_ADDRESS);",
-			"inc":"#include \"Grove_I2C_Motor_Driver.h\"\n",
-			"def":"#define I2C_ADDRESS {0}",
+			"setup":"Motor.begin(I2C_ADDRESS);\n",
+			"inc":"\n#include \"Grove_I2C_Motor_Driver.h\"\n",
+			"def":"\n#define I2C_ADDRESS {0}",
 			"work":"",
 			"loop":""
 		}
@@ -59,12 +93,61 @@
 			"work":"Motor.stop({0});",
 			"loop":""
 		}
+		],
+				["w",
+		"init left encoder pin ( %n,%n )",
+		"init left encoder pin ",
+		"1",
+		"2",
+		{
+			"setup":"",
+			"inc":"\n#include \"Encoder.h\"\n",
+			"def":"Encoder knobLeft({0},{1});\n",
+			"work":"",
+			"loop":""
+		}
+		],
+				["w",
+		"init right encoder pin ( %n,%n )",
+		"init right encoder pin",
+		"3",
+		"4",
+		{
+			"setup":"",
+			"inc":"\n#include \"Encoder.h\"\n",
+			"def":"Encoder knobRight({0},{1});\n",
+			"work":"",
+			"loop":""
+		}
+		],
+		["w",
+		"Init IMU Grove",
+		"Init IMU Grove",
+		{
+			"setup":" myIMU.begin();\n",
+			"inc":"\n#include \"SparkFunLSM6DS3.h\"\n",
+			"def":"LSM6DS3 myIMU( 0x6A );\n ",
+			"work":"",
+			"loop":""
+		}
 		]
 	],
 		"menus": {
-		"motors":["1","2"]
+		"motors":["1","2"],
+		"imu":["readFloatAccelX","readFloatAccelY","readFloatAccelZ",
+					"readFloatGyroX","readFloatGyroY","readFloatGyroZ",
+					"readTempC","readTempF"]
 	},
 	"values":{
+		"readFloatAccelX":1,
+		"readFloatAccelY":2,
+		"readFloatAccelZ":3,
+		"readFloatGyroX":4,
+		"readFloatGyroY":5,
+		"readFloatGyroZ":6,
+		"readTempC":7,
+		"readTempF":8,
+
 		"1":1,
 		"2":2
 	},
