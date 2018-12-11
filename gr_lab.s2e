@@ -12,7 +12,7 @@
 	"blockSpecs": [
 		["h","GR-LAB - générer le code","runArduino"],
 		["r",
-		"read ultrasonic pin %n",
+		"Read ultrasonic pin %n",
 		"read ultrasonic",
 		"8",
 		{
@@ -24,7 +24,7 @@
 		}
 	],
 		["r",
-		"imu %d.imu",
+		"Imu %d.imu",
 		"read IMU",
 		"readFloatAccelX",
 		{
@@ -49,7 +49,7 @@
 		}
 	],
 		["w",
-		"I2C motor driver adresse %s set motor %d.motors to %n \%",
+		"I2C motor driver adress %s set motor %d.motors to %n \%",
 		"set motor speed",
 		"0x0f",
 		"1",
@@ -64,7 +64,7 @@
 		],
 
 		["w",
-		"I2C motor driver adresse %s stop motor %d.motors",
+		"I2C motor driver adress %s stop motor %d.motors",
 		"stop motor speed",
 		"0x0f",
 		"1",
