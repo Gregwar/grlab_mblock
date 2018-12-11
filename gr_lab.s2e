@@ -10,7 +10,7 @@
   	"extensionPort":0,
 	"tags" : "makeblock,GRLab,grove",
 	"blockSpecs": [
-		["h","GR-LAB - générer le code","runArduino"],
+		["h","GR-LAB - Start program","runArduino"],
 		["r",
 		"Read ultrasonic pin %n",
 		"read ultrasonic",
