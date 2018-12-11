@@ -18,8 +18,8 @@
 		{
 			"setup":"",
 			"inc":"\n#include \"Ultrasonic.h\"\n",
-			"def":"Ultrasonic ultrasonic({0});",
-			"work":"ultrasonic.MeasureInCentimeters()",
+			"def":"Ultrasonic ultrasonic_{0}({0});",
+			"work":"ultrasonic_{0}.MeasureInCentimeters()",
 			"loop":""
 		}
 	],
@@ -28,106 +28,51 @@
 		"read IMU",
 		"readFloatAccelX",
 		{
-			"setup":"",
-			"inc":"",
-			"def":"",
+			"setup":" myIMU.begin();\n",
+			"inc":"\n#include \"SparkFunLSM6DS3.h\"\n",
+			"def":"LSM6DS3 myIMU( 0x6A );\n ",
 			"work":"myIMU.mblocCall({0})",
 			"loop":""
 		}
 	],
 			["r",
-		"Read left encoder",
-		"Read left encoder",
-		{
-			"setup":"",
-			"inc":"",
-			"def":"",
-			"work":"knobLeft.read()",
-			"loop":""
-		}
-	],
-			["r",
-		"Read right encoder",
-		"Read right encoder",
-		{
-			"setup":"",
-			"inc":"",
-			"def":"",
-			"work":"knobRight.read()",
-			"loop":""
-		}
-	],
-		["w",
-		"Set I2C motor driver adress %s ",
-		"Set I2C motor driver adress",
-		"0x0f",
-		{
-			"setup":"Motor.begin(I2C_ADDRESS);\n",
-			"inc":"\n#include \"Grove_I2C_Motor_Driver.h\"\n",
-			"def":"\n#define I2C_ADDRESS {0}",
-			"work":"",
-			"loop":""
-		}
-	],
-		["w",
-		"set motor %d.motors to %n \%",
-		"set motor",
-		"1",
-		"70",
-		{
-			"setup":"",
-			"inc":"",
-			"def":"",
-			"work":"Motor.speed({0}, {1});",
-			"loop":""
-		}
-		],
-		["w",
-		"Stop motor %d.motors",
-		"Stop motor",
-		"1",
-		{
-			"setup":"",
-			"inc":"",
-			"def":"",
-			"work":"Motor.stop({0});",
-			"loop":""
-		}
-		],
-				["w",
-		"init left encoder pin ( %n,%n )",
-		"init left encoder pin ",
+		"Read encoder pin ( %n , %n )",
+		"Read encoder",
 		"1",
 		"2",
 		{
 			"setup":"",
 			"inc":"\n#include \"Encoder.h\"\n",
-			"def":"Encoder knobLeft({0},{1});\n",
-			"work":"",
+			"def":"Encoder knobLeft_{0}_{1}({0},{1});\n",
+			"work":"knobLeft_{0}_{1}.read()",
 			"loop":""
 		}
-		],
-				["w",
-		"init right encoder pin ( %n,%n )",
-		"init right encoder pin",
-		"3",
-		"4",
-		{
-			"setup":"",
-			"inc":"\n#include \"Encoder.h\"\n",
-			"def":"Encoder knobRight({0},{1});\n",
-			"work":"",
-			"loop":""
-		}
-		],
+	],
 		["w",
-		"Init IMU Grove",
-		"Init IMU Grove",
+		"I2C motor driver adresse %s set motor %d.motors to %n \%",
+		"set motor speed",
+		"0x0f",
+		"1",
+		"70",
 		{
-			"setup":" myIMU.begin();\n",
-			"inc":"\n#include \"SparkFunLSM6DS3.h\"\n",
-			"def":"LSM6DS3 myIMU( 0x6A );\n ",
-			"work":"",
+			"setup":"my_driver_motor_{0}.begin({0});\n",
+			"inc":"\n#include \"Grove_I2C_Motor_Driver.h\"\n",
+			"def":"I2CMotorDriver my_driver_motor_{0};\n",
+			"work":"my_driver_motor_{0}.speed({1}, {2});\n",
+			"loop":""
+		}
+		],
+
+		["w",
+		"I2C motor driver adresse %s stop motor %d.motors",
+		"stop motor speed",
+		"0x0f",
+		"1",
+		{
+			"setup":"my_driver_motor_{0}.begin({0});\n",
+			"inc":"\n#include \"Grove_I2C_Motor_Driver.h\"\n",
+			"def":"I2CMotorDriver my_driver_motor_{0};\n",
+			"work":"my_driver_motor_{0}.stop({1});\n",
 			"loop":""
 		}
 		]
