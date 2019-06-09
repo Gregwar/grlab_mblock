@@ -1,7 +1,7 @@
 {	
 	"extensionName": "GR_lab (Arduino mode Only)",
 	"description": "GRLab extension (arduino mega only)",
-	"version": "1.0",
+	"version": "1.1",
 	"author": "Paul (support@generationrobots.com)",
 	"homepage": "http://www.generationrobots.com",
 	"sort":0,
@@ -34,7 +34,40 @@
 			"work":"myIMU.mblocCall({0})",
 			"loop":""
 		}
-	],
+    ],  ["w",
+        "Imu reset gyro Z",
+        "Imu reset",
+        "resetGyro",
+        {
+            "setup":" myIMU.begin();\n",
+			"inc":"\n#include \"SparkFunLSM6DS3.h\"\n",
+			"def":"LSM6DS3 myIMU( 0x6A );\n ",
+			"work":"myIMU.resetGyroZ();",
+			"loop":""
+        }
+    ], ["w",
+        "Imu tare gyro Z",
+        "Imu tare",
+        "tareImu",
+        {
+            "setup":" myIMU.begin();\n",
+			"inc":"\n#include \"SparkFunLSM6DS3.h\"\n",
+			"def":"LSM6DS3 myIMU( 0x6A );\n ",
+			"work":"myIMU.tareGyroZ();",
+			"loop":""
+        }
+    ], ["r",
+        "Imu gyro Z",
+        "Imu gyroZ",
+        "tareImu",
+        {
+            "setup":" myIMU.begin();\n",
+			"inc":"\n#include \"SparkFunLSM6DS3.h\"\n",
+			"def":"LSM6DS3 myIMU( 0x6A );\n ",
+			"work":"myIMU.readGyroZ()",
+			"loop":""
+        }
+    ],
 			["r",
 		"Read encoder pin ( %n , %n )",
 		"Read encoder",
@@ -97,6 +130,5 @@
 		"2":2
 	},
 	"translators":{
-		}
 	}
 }

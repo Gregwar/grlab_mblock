@@ -155,6 +155,9 @@ public:
 	int16_t readRawGyroX( void );
 	int16_t readRawGyroY( void );
 	int16_t readRawGyroZ( void );
+    void integrateGyroZ();
+    void resetGyroZ();
+    void tareGyroZ();
 
 	//Returns the values as floats.  Inside, this calls readRaw___();
 	float readFloatAccelX( void );
@@ -163,6 +166,7 @@ public:
 	float readFloatGyroX( void );
 	float readFloatGyroY( void );
 	float readFloatGyroZ( void );
+    float readGyroZ();
 
 	//Temperature related methods
 	int16_t readRawTemp( void );
@@ -181,6 +185,11 @@ public:
 
 	float mblocCall(int input);
 	
+    float gyroZ;
+    long gyroZDelta;
+    long gyroZSamples;
+    float gyroZOffset;
+
 private:
 
 };
